@@ -1,0 +1,263 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+
+    <title>Api Test</title>
+  </head>
+  <body>
+    <div class="container-fluid" style="overflow: scroll">
+
+
+
+      <h1>API TEST</h1>
+      <button class="btn btn-warning mr-1" onclick="loadMusic()">GET ALBUMS</button>
+      <!-- <button class="btn btn-info mr-1" onclick="checkin()">CHECK</button> -->
+      <button type="button" onclick="checkin()" class="btn btn-info">
+        GET THE TOTAL<span id="count" class="badge bg-secondary"></span>
+      </button>
+      <!-- <p style="display: inline;">Albums on Page are:</p><p id="count"style="display: inline;"></p> -->
+      <div class="row p-2">
+          <div class="col-4"> <ul id="myList">
+            <h2>Eminem Albums</h2>
+
+        </ul></div>
+          <div class="col-4"><ul id="myList1">
+            <h2>Metallica Albums</h2>
+
+        </ul></div>
+          <div class="col-4">
+            <ul id="myList2">
+                <h2>Behemoth Albums</h2>
+    
+            </ul>
+          </div>
+         
+
+        <p id="demo"></p>
+      </div>
+
+
+
+
+    </div>
+    <script>
+        function checkin(){
+
+let lisOnPage = document.getElementsByTagName("li")
+let long = lisOnPage.length
+let pis = document.getElementById("count")
+pis.innerHTML = long
+
+
+
+
+
+
+        }
+
+
+
+
+      function loadMusic() {
+        fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "9210327225msh5b0b680f81169b1p168802jsnac26172fe44c",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          },
+        })
+          .then((response) => response.json())
+          .then((music) => {
+              
+            // const row = document.querySelector(".row");
+            // row.innerText = "";
+            // console.log(music.data[0])
+            // myJSON = JSON.stringify(music.data[0])
+            // console.log(myJSON)
+            // myObj = JSON.parse(music)
+            // console.log(myObj)
+            let myList = document.getElementById("myList")
+             for (let i = 0; i < music.data.length; i++) {
+                let songs = music.data[i].title;
+                li = document.createElement('li')
+                li.innerHTML= songs
+                myList.appendChild(li)
+              
+              
+            //   myJSON = JSON.stringify(music.data[i])
+              
+              
+            //   const songDiv = document.createElement("div");
+            //   songDiv.classList.add("col-12");
+            //   songDiv.classList.add("col-md-3");
+            //   // add <img src="https://...." />
+            //   songDiv.innerText = songs.title
+            //   row.appendChild(songDiv)
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+          fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "9210327225msh5b0b680f81169b1p168802jsnac26172fe44c",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          },
+        })
+          .then((response) => response.json())
+          .then((music) => {
+              
+            // const row = document.querySelector(".row");
+            // row.innerText = "";
+            // console.log(music.data[0])
+            // myJSON = JSON.stringify(music.data[0])
+            // console.log(myJSON)
+            // myObj = JSON.parse(music)
+            // console.log(myObj)
+            let myList = document.getElementById("myList1")
+             for (let i = 0; i < music.data.length; i++) {
+                let songs = music.data[i].title;
+                li = document.createElement('li')
+                li.innerHTML= songs
+                myList.appendChild(li)
+              
+              
+            //   myJSON = JSON.stringify(music.data[i])
+              
+              
+            //   const songDiv = document.createElement("div");
+            //   songDiv.classList.add("col-12");
+            //   songDiv.classList.add("col-md-3");
+            //   // add <img src="https://...." />
+            //   songDiv.innerText = songs.title
+            //   row.appendChild(songDiv)
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+          fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q= behemoth  ", {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "9210327225msh5b0b680f81169b1p168802jsnac26172fe44c",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          },
+        })
+          .then((response) => response.json())
+          .then((music) => {
+              
+            // const row = document.querySelector(".row");
+            // row.innerText = "";
+            // console.log(music.data[0])
+            // myJSON = JSON.stringify(music.data[0])
+            // console.log(myJSON)
+            // myObj = JSON.parse(music)
+            // console.log(myObj)
+            let myList = document.getElementById("myList2")
+             for (let i = 0; i < music.data.length; i++) {
+                let songs = music.data[i].title;
+                li = document.createElement('li')
+                li.innerHTML= songs
+                myList.appendChild(li)
+              
+              
+            //   myJSON = JSON.stringify(music.data[i])
+              
+              
+            //   const songDiv = document.createElement("div");
+            //   songDiv.classList.add("col-12");
+            //   songDiv.classList.add("col-md-3");
+            //   // add <img src="https://...." />
+            //   songDiv.innerText = songs.title
+            //   row.appendChild(songDiv)
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+
+
+      function loadBooks() {
+            console.log("the button has been clicked")
+            const loader = document.getElementById("loader")
+           
+            // fetch the information from the APIs
+            // fetch("https://striveschool-api.herokuapp.com/books")
+            //     .then(function(booksResp) { 
+            //         return booksResp.json()
+            //     })
+            //     .then(function(books) {
+            //         console.log(books)
+            //     })
+
+
+            fetch("https://striveschool-api.herokuapp.com/books")
+                .then(resp => resp.json()) // transform the response body in a JSON object
+                .then(books => {
+                    console.log(books)
+                    const row = document.querySelector(".row")
+                    row.innerText = ""
+
+
+                    for(let i = 0; i < books.length; i++) {
+                        const book = books[i]
+                        
+                        //add the book to the row!
+                        // create a <div class="col col-md-3">
+                        const bookDiv = document.createElement("div")
+                        bookDiv.classList.add("col-12")
+                        bookDiv.classList.add("col-md-3")
+                        // add <img src="https://...." />
+                        const img = document.createElement("img")
+                        img.src = book.img
+                        img.classList.add("img-fluid")
+                        // img.addEventListener('load', () => console.log("test"))
+                        bookDiv.appendChild(img)
+                        row.appendChild(bookDiv)
+                    }
+                    
+                }) // use the data
+                .catch(err => {
+                    const row = document.querySelector(".row")
+                    row.innerText = "Cannot load the books list"
+                    console.log("THIS IS THE CATCH CLAUSE", err)
+                    
+                })
+
+
+            console.log("this will be executed before the fetch callback")
+        }
+
+
+
+
+
+
+
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
